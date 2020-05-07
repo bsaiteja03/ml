@@ -1,0 +1,316 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled",
+      "provenance": [],
+      "authorship_tag": "ABX9TyOpHD88xRPal+TPS1Zvl2ah",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/bsaiteja03/ml/blob/master/nlp%20lab%20record%201-3\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "HcprYUwBC1xA",
+        "colab_type": "code",
+        "outputId": "13f725ec-657c-4c06-cf8f-2988eeb62c7f",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 118
+        }
+      },
+      "source": [
+        "from nltk.stem import PorterStemmer\n",
+        "from nltk.tokenize import word_tokenize\n",
+        "\n",
+        "ps = PorterStemmer()\n",
+        "sentence = \"Pintu is useless bad boy\"\n",
+        "words = word_tokenize(sentence)\n",
+        "print(words)\n",
+        "for w in words:\n",
+        "    print(w, \" : \", ps.stem(w))"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "['Pintu', 'is', 'useless', 'bad', 'boy']\n",
+            "Pintu  :  pintu\n",
+            "is  :  is\n",
+            "useless  :  useless\n",
+            "bad  :  bad\n",
+            "boy  :  boy\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "--4iULWeDHNm",
+        "colab_type": "code",
+        "outputId": "afe3c2a8-5f3e-44f7-9165-45c380520d28",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 67
+        }
+      },
+      "source": [
+        "import nltk\n",
+        "nltk.download('punkt')"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[nltk_data] Downloading package punkt to /root/nltk_data...\n",
+            "[nltk_data]   Unzipping tokenizers/punkt.zip.\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 3
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "oeqzQK4eC7cM",
+        "colab_type": "code",
+        "outputId": "7c42ead8-640c-48ba-f398-13567b9688ff",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 50
+        }
+      },
+      "source": [
+        "from nltk.tokenize import word_tokenize \n",
+        " \n",
+        "sentence = \"Chintu is lazy scummy retard\"\n",
+        "words = word_tokenize(sentence) \n",
+        "print(words)\n",
+        "res = len(sentence.split()) \n",
+        "print (\"The number of words in string are : \" +  str(res)) "
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "['Chintu', 'is', 'lazy', 'scummy', 'retard']\n",
+            "The number of words in string are : 5\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "eGPogxZ_DRLP",
+        "colab_type": "code",
+        "outputId": "c9e86745-8a17-4e85-f501-c9f0144fe8c7",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 67
+        }
+      },
+      "source": [
+        "import nltk\n",
+        "nltk.download('stopwords')\n",
+        "from nltk.corpus import stopwords\n",
+        "from nltk.tokenize import word_tokenize\n",
+        "\n",
+        "example = \"Example sentence, this is an example\"\n",
+        "stop_words = set(stopwords.words('english'))\n",
+        "word = word_tokenize(example)\n",
+        "\n",
+        "filtered = [w for w in word if not w in stop_words]\n",
+        "filtered = []\n",
+        "\n",
+        "for w in word:\n",
+        "    if w not in stop_words:\n",
+        "        filtered.append(w)\n",
+        "#     print(word)\n",
+        "\n",
+        "print(filtered)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[nltk_data] Downloading package stopwords to /root/nltk_data...\n",
+            "[nltk_data]   Unzipping corpora/stopwords.zip.\n",
+            "['Example', 'sentence', ',', 'example']\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "DE9mcpX_DVRi",
+        "colab_type": "code",
+        "outputId": "f98fd7dc-6274-487a-9dea-9cea559a462e",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 255
+        }
+      },
+      "source": [
+        "import nltk \n",
+        "nltk.download('punkt')\n",
+        "nltk.download('averaged_perceptron_tagger')\n",
+        "txt=\"Notice of a bid advertisement shall be published in at least one local newspaper and in one trade publication at least 30 days in advance of sale. If applicable, the notice must identify the reservation within which the tracts to be leased are found. Specific descriptions of the tracts shall be available at the office of the superintendent. The complete text of the advertisement shall be mailed to each person listed on the appropriate agency mailing list.\"\n",
+        "print(txt)\n",
+        "print()\n",
+        "from nltk.tokenize import word_tokenize, sent_tokenize \n",
+        "tokenized = sent_tokenize(txt) \n",
+        "print(tokenized)\n",
+        "print()\n",
+        "for i in tokenized: \n",
+        "    wordsList = nltk.word_tokenize(i) \n",
+        "    tagged = nltk.pos_tag(wordsList)\n",
+        "    print(tagged)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[nltk_data] Downloading package punkt to /root/nltk_data...\n",
+            "[nltk_data]   Package punkt is already up-to-date!\n",
+            "[nltk_data] Downloading package averaged_perceptron_tagger to\n",
+            "[nltk_data]     /root/nltk_data...\n",
+            "[nltk_data]   Unzipping taggers/averaged_perceptron_tagger.zip.\n",
+            "Notice of a bid advertisement shall be published in at least one local newspaper and in one trade publication at least 30 days in advance of sale. If applicable, the notice must identify the reservation within which the tracts to be leased are found. Specific descriptions of the tracts shall be available at the office of the superintendent. The complete text of the advertisement shall be mailed to each person listed on the appropriate agency mailing list.\n",
+            "\n",
+            "['Notice of a bid advertisement shall be published in at least one local newspaper and in one trade publication at least 30 days in advance of sale.', 'If applicable, the notice must identify the reservation within which the tracts to be leased are found.', 'Specific descriptions of the tracts shall be available at the office of the superintendent.', 'The complete text of the advertisement shall be mailed to each person listed on the appropriate agency mailing list.']\n",
+            "\n",
+            "[('Notice', 'NNP'), ('of', 'IN'), ('a', 'DT'), ('bid', 'NN'), ('advertisement', 'NN'), ('shall', 'MD'), ('be', 'VB'), ('published', 'VBN'), ('in', 'IN'), ('at', 'IN'), ('least', 'JJS'), ('one', 'CD'), ('local', 'JJ'), ('newspaper', 'NN'), ('and', 'CC'), ('in', 'IN'), ('one', 'CD'), ('trade', 'NN'), ('publication', 'NN'), ('at', 'IN'), ('least', 'JJS'), ('30', 'CD'), ('days', 'NNS'), ('in', 'IN'), ('advance', 'NN'), ('of', 'IN'), ('sale', 'NN'), ('.', '.')]\n",
+            "[('If', 'IN'), ('applicable', 'JJ'), (',', ','), ('the', 'DT'), ('notice', 'NN'), ('must', 'MD'), ('identify', 'VB'), ('the', 'DT'), ('reservation', 'NN'), ('within', 'IN'), ('which', 'WDT'), ('the', 'DT'), ('tracts', 'NNS'), ('to', 'TO'), ('be', 'VB'), ('leased', 'VBN'), ('are', 'VBP'), ('found', 'VBN'), ('.', '.')]\n",
+            "[('Specific', 'JJ'), ('descriptions', 'NNS'), ('of', 'IN'), ('the', 'DT'), ('tracts', 'NNS'), ('shall', 'MD'), ('be', 'VB'), ('available', 'JJ'), ('at', 'IN'), ('the', 'DT'), ('office', 'NN'), ('of', 'IN'), ('the', 'DT'), ('superintendent', 'NN'), ('.', '.')]\n",
+            "[('The', 'DT'), ('complete', 'JJ'), ('text', 'NN'), ('of', 'IN'), ('the', 'DT'), ('advertisement', 'NN'), ('shall', 'MD'), ('be', 'VB'), ('mailed', 'VBN'), ('to', 'TO'), ('each', 'DT'), ('person', 'NN'), ('listed', 'VBN'), ('on', 'IN'), ('the', 'DT'), ('appropriate', 'JJ'), ('agency', 'NN'), ('mailing', 'VBG'), ('list', 'NN'), ('.', '.')]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "rtQvDT9pDpYF",
+        "colab_type": "code",
+        "outputId": "98e3a910-dcbc-475c-9cab-1537f872ab69",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 84
+        }
+      },
+      "source": [
+        "import nltk\n",
+        "# Download if punkt error\n",
+        "# nltk.download('punkt')\n",
+        "from nltk import word_tokenize, RegexpTokenizer\n",
+        "\n",
+        "s='The little mouse ate the fresh cheeze'\n",
+        "s=nltk.pos_tag(word_tokenize(s))\n",
+        "\n",
+        "chunk_rule=r\"NP:{<DT>?<JJ>*<NN>}\"\n",
+        "chunk_parser=nltk.RegexpParser(chunk_rule)\n",
+        "\n",
+        "res=chunk_parser.parse(s)\n",
+        "print(res)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "(S\n",
+            "  (NP The/DT little/JJ mouse/NN)\n",
+            "  ate/VB\n",
+            "  (NP the/DT fresh/JJ cheeze/NN))\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "yq0HBg-xDu65",
+        "colab_type": "code",
+        "outputId": "e085c4c4-9524-40f6-e8b6-fd85d9de6244",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 50
+        }
+      },
+      "source": [
+        "from nltk.tokenize import word_tokenize \n",
+        " \n",
+        "sentence = \"Chintu is lazy scummy retard\"\n",
+        "words = word_tokenize(sentence) \n",
+        "print(words)\n",
+        "res = len(sentence.split()) \n",
+        "print (\"The number of words in string are : \" +  str(res)) "
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "['Chintu', 'is', 'lazy', 'scummy', 'retard']\n",
+            "The number of words in string are : 5\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "xpRroaoqEwxk",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
